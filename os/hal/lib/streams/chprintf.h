@@ -38,11 +38,20 @@
 extern "C" {
 #endif
   int chvprintf(BaseSequentialStream *chp, const char *fmt, va_list ap)
-    __attribute__((format(printf, 2, 0)));
+#if (__GNUC__)
+    __attribute__((format(printf, 2, 0)))
+#endif
+    ;
   int chprintf(BaseSequentialStream *chp, const char *fmt, ...)
-    __attribute__((format(printf, 2, 3)));
+#if (__GNUC__)
+    __attribute__((format(printf, 2, 3)))
+#endif
+    ;
   int chsnprintf(char *str, size_t size, const char *fmt, ...)
-    __attribute__((format(printf, 3, 4)));
+#if (__GNUC__)
+    __attribute__((format(printf, 3, 4)))
+#endif
+    ;
 #ifdef __cplusplus
 }
 #endif
